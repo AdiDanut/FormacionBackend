@@ -45,7 +45,7 @@ public class App {
         if (name.trim().isEmpty()) {
             throw new InvalidLineFormatException("El nombre está vacío en la línea: " + line);
         }
-        String town = parts.length > 1 ? parts[1] : " ";
+        String town = parts.length > 1 ? parts[1] : "Desconocida";
         int age = parts.length > 2 ? Integer.parseInt(parts[2]) : 0;
 
         return new Person(name, town, age);

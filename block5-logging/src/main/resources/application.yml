@@ -1,0 +1,6 @@
+logging:
+  level:
+    root: WARN
+    my.package: ERROR
+  file:
+    name: C:/Users/adi.danut/IdeaProjects/block5-logging/logs/application.log
