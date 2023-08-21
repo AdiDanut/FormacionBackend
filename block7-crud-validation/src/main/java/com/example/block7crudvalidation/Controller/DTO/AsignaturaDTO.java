@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class AsignaturaDTO {
-    private Long idAsignatura;
-    private Long idStudent;
+    private String idAsignatura;
+    private List<String> idStudent;
     private String asignatura;
     private String comments;
     private Date initialDate;

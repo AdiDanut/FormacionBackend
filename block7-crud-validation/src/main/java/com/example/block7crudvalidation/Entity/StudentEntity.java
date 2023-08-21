@@ -1,9 +1,12 @@
 package com.example.block7crudvalidation.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,4 +35,13 @@ public class StudentEntity {
 
     @Column(name = "branch", nullable = false)
     private String branch;
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(
+            name = "student_asignatura",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "asignatura_id")
+    )
+    @JsonIgnore
+    private List<AsignaturaEntity> asignaturaEntityList;
 }

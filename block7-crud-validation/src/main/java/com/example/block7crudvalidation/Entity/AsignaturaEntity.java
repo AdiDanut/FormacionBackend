@@ -3,9 +3,11 @@ package com.example.block7crudvalidation.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import com.example.block7crudvalidation.Entity.StudentEntity;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -19,9 +21,8 @@ public class AsignaturaEntity {
     @Column(name = "id_asignatura")
     private String idAsignatura;
 
-    @ManyToOne
-    @JoinColumn(name = "id_student", referencedColumnName = "id_student")
-    private StudentEntity student;
+    @ManyToMany(mappedBy = "asignaturaEntityList", cascade = CascadeType.MERGE)
+    private List<StudentEntity> student;
 
     @Column(name = "asignatura")
     private String asignatura;

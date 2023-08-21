@@ -9,4 +9,7 @@ import java.util.Optional;
 
 public interface ProfesorRepository extends JpaRepository<ProfesorEntity, String> {
 
+    @Query("SELECT P FROM ProfesorEntity P " +
+            "WHERE P.persona.id_persona = :idPersona")
+    Optional<ProfesorEntity> findByIdPersona(@Param("idPersona") Long idPersona);
 }

@@ -36,4 +36,11 @@ public class CustomErrorFactory {
         customError.setHttpCode(422);
         return customError;
     }
+
+    public static CustomError createUserProfesor(){
+        customError.setTimestamp(new Date());
+        customError.setHttpCode(422);
+        customError.setMensaje("El usuario no puede ser profesor y alumno al mismo tiempo");
+        return customError;
+    }
 }
