@@ -1,6 +1,8 @@
 package com.example.block7crudvalidation.Controller;
 
 import com.example.block7crudvalidation.Controller.DTO.PersonaDTO;
+import com.example.block7crudvalidation.Controller.DTO.ProfesorDTO;
+import com.example.block7crudvalidation.Feign.ProfesorFeignClient;
 import com.example.block7crudvalidation.Service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,9 @@ public class PersonaController {
 
     @Autowired
     private PersonaService personaService;
+
+    @Autowired
+    private ProfesorFeignClient profesorFeignClient;
 
     @PostMapping
     public ResponseEntity<PersonaDTO> addPersona(@RequestBody PersonaDTO personaDTO) throws Exception {
@@ -37,6 +42,11 @@ public class PersonaController {
     public ResponseEntity<PersonaDTO> getPersonaByUsuario(@PathVariable String usuario) throws Exception {
         PersonaDTO personaDTO = personaService.getPersonaByUsuario(usuario);
         return ResponseEntity.ok(personaDTO);
+    }
+
+    @GetMapping("/profesores/{id}")
+    public ProfesorDTO getProfesor(@PathVariable String id) {
+        return profesorFeignClient.getProfesor(id);
     }
 
 }
