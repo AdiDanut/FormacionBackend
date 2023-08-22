@@ -1,0 +1,30 @@
+version: "3.8"
+
+networks:
+  my_custom_network:
+    driver: bridge
+
+services:
+  postgres:
+      image: postgres
+      restart: always
+      ports:
+        - "5432:5432"
+      environment:
+        - DATABASE_HOST=127.0.0.1
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=contrasena
+        - POSTGRES_DB=test
+      networks:
+        - my_custom_network
+  pdadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+    networks:
+      - my_custom_network
