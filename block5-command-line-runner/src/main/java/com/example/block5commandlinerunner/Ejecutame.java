@@ -15,7 +15,8 @@ public class Ejecutame {
     private String miValor;
     @Value("${greeting}")
     private String miValor2;
-    @Value("${new.property}")
+
+    @Value("${mivar2}")
     private String miValor3;
     @Bean
     CommandLineRunner ejecutame1()
