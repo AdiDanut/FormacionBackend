@@ -8,8 +8,14 @@ import com.example.block7crudvalidation.Exceptions.UnprocessableEntityException;
 import com.example.block7crudvalidation.Factory.CustomErrorFactory;
 import com.example.block7crudvalidation.Repository.PersonaRepository;
 import com.example.block7crudvalidation.Service.PersonaService;
+import com.example.block7crudvalidation.Specifications.PersonaSpecs;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -59,11 +65,18 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
-    public List<PersonaDTO> getAllPersonas() {
-        List<PersonaEntity> personas = personaRepository.findAll();
-        return personas.stream()
+    public Page<PersonaDTO> getAllPersonasWithPagination(String username, String name, String surname, Date fechaCreacion, int pageNumber, int size) {
+        Pageable pageable = PageRequest.of(pageNumber, size);
+
+        Specification<PersonaEntity> spec = PersonaSpecs.filter(username, name, surname, fechaCreacion);
+
+        Page<PersonaEntity> personasPage = personaRepository.findAll(spec, pageable);
+        List<PersonaDTO> personasDTOList = personasPage.getContent()
+                .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+
+        return new PageImpl<>(personasDTOList, pageable, personasPage.getTotalElements());
     }
 
     private PersonaDTO convertToDTO(PersonaEntity persona) {

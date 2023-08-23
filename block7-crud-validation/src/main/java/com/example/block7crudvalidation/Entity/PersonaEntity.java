@@ -41,6 +41,7 @@ public class PersonaEntity {
     @Column(nullable = false)
     private boolean active;
 
+    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date created_date;
 

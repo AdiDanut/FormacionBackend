@@ -16,4 +16,5 @@ public interface AsignaturaService {
     void deleteAsignatura(String id);
 
     List<AsignaturaDTO> getByIdEstudiante(String idEstuadinte);
+
 }
