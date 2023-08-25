@@ -25,9 +25,9 @@ public class PersonaController {
         return personaService.updatePersona(id, persona);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePersona(@PathVariable Long id) throws ClassNotFoundException {
-        personaService.deletePersona(id);
+    @DeleteMapping("/{id}/{id2}")
+    public ResponseEntity<?> deletePersona(@PathVariable Long id, @PathVariable Long id2) throws ClassNotFoundException {
+        personaService.deletePersona(id, id2);
         return ResponseEntity.ok().build();
     }
 

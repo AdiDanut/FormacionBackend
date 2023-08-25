@@ -3,9 +3,11 @@ package com.example.block7crud.Service.Impl;
 import com.example.block7crud.Entity.PersonaEntity;
 import com.example.block7crud.Repository.PersonaRepository;
 import com.example.block7crud.Service.PersonaService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,21 +48,17 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
-    public void deletePersona(Long id) {
-        try {
-            Optional<PersonaEntity> persona = personaRepository.findById(id);
+    @Transactional
+    public void deletePersona(Long id1, Long id2) {
+            Optional<PersonaEntity> persona = personaRepository.findById(id1);
+            personaRepository.delete(persona.get());
+            deletePersona2(id2);
 
-            if (persona.isEmpty()) {
-                throw new ClassNotFoundException();
-            }
+    }
 
-            PersonaEntity personaEntity = persona.get();
-
-            personaRepository.delete(personaEntity);
-        } catch (Exception ex) {
-
-            throw new RuntimeException("Error al eliminar la persona.", ex);
-        }
+    private void deletePersona2(Long id2) {
+        Optional<PersonaEntity> persona2 = personaRepository.findById(id2);
+        personaRepository.delete(persona2.get());
     }
 
     @Override
