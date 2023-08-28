@@ -1,5 +1,6 @@
 package com.example.block7crudvalidation.controller.dto;
 
+import com.example.block7crudvalidation.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,9 @@ public class PersonaDTO {
     private String personalEmail;
     private String city;
     private boolean active;
-    private Date createdDated;
+    private Date createdDate;
     private String imagenUrl;
     private Date terminationDate;
+    private Role role;
 }
 
