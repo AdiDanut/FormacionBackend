@@ -27,8 +27,8 @@ public class Controller {
 
     @GetMapping("/header")
     public ResponseEntity<String> getHeader(
-            @RequestHeader(required = true) String param1,
-            @RequestHeader(required = true) String param2){
+            @RequestHeader() String param1,
+            @RequestHeader() String param2){
         String responseMessage = "El parámetro h1 es: " + param1 + " y el parámetro H2 es: " + param2;
 
         return ResponseEntity.ok(responseMessage);
