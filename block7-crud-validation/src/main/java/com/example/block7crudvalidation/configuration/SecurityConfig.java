@@ -33,15 +33,6 @@ public class SecurityConfig {
                             .requestMatchers(
                                     AntPathRequestMatcher.antMatcher("/auth/**"))
                             .permitAll()
-                            .requestMatchers(
-                                    AntPathRequestMatcher.antMatcher("/**"))
-                                .hasRole("ADMIN")
-                            .requestMatchers(
-                                    AntPathRequestMatcher.antMatcher("/asignaturas/**"),
-                                    AntPathRequestMatcher.antMatcher("/profesores/**"),
-                                    AntPathRequestMatcher.antMatcher("/students/**"),
-                                    AntPathRequestMatcher.antMatcher("/persona/**"))
-                                .hasAnyRole("ADMIN", "USER")
                             .anyRequest()
                             .authenticated();
                 })

@@ -2342,3 +2342,5 @@ Unconditional classes:
 2023-08-14 10:21:36.741 ERROR [main] c.e.b.Block5LoggingApplication - Este es un mensaje de error.
 2023-08-14 10:22:12.403 WARN  [main] c.e.b.Block5LoggingApplication - Este es un mensaje de advertencia.
 2023-08-14 10:22:12.405 ERROR [main] c.e.b.Block5LoggingApplication - Este es un mensaje de error.
+2023-10-17 08:29:57.637 WARN  [main] c.e.b.Block5LoggingApplication - Este es un mensaje de advertencia.
+2023-10-17 08:29:57.639 ERROR [main] c.e.b.Block5LoggingApplication - Este es un mensaje de error.

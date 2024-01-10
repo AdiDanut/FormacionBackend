@@ -5,32 +5,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ViajeEntity {
+@AllArgsConstructor
+public class ClienteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String origen;
+    private String nombre;
 
-    private String destino;
+    private String apellido;
 
-    private LocalDate departureDate;
+    private int edad;
 
-    private LocalDate arrivalDate;
+    private String email;
 
-    private int pasajeros;
+    private String telefono;
 
-    private String status;
-
-    @OneToMany(mappedBy = "viaje")
+    @OneToMany(mappedBy = "cliente")
     private Set<ClienteViajeEntity> clienteViajes;
 
 }
